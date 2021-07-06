@@ -7,13 +7,22 @@ import oracle.soda.OracleDatabase;
 import oracle.soda.OracleException;
 import oracle.soda.rdbms.OracleRDBMSClient;
 
-public class OracleSodaApplication {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.oracle.springapp.model.Employee;
+import com.oracle.springapp.service.EmployeeService;
+
+public class OracleSodaApplication implements CommandLineRunner{
     public static void main(String[] args) {
 		SpringApplication.run(OracleSodaApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
+        /*
         OracleRDBMSClient cl = new OracleRDBMSClient();
         OracleDatabase db    = cl.getDatabase(conn);
         OracleCollection col = db.admin().createCollection("MyJSONCollection");
@@ -40,5 +49,6 @@ public class OracleSodaApplication {
             System.out.println("Key:         " + resultDoc.getKey());
             System.out.println("Content:     " + resultDoc.getContentAsString());
         }
+        */
     }
 }
