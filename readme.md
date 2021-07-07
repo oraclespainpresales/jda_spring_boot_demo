@@ -115,7 +115,7 @@ The application is a web service that initialize a web server in the **8080** po
 Then you can use the **TERMINAL** window to launch a cURL command to create employees in the AJDB employee collection.
 
 ```sh
-curl -X POST http://localhost:8080/insert -H 'cache-control: no-cache' -H 'Content-Type: application/json' -d '{"empno":"100","name":"Ivan","job":"Cloud Architech","manager":"10","hiredate":"2021-07-07T13:41:57Z","salary":"20000","commission":"5000","deptno":"5"}'
+curl -X POST http://localhost:8080/insert -H 'cache-control: no-cache' -H 'Content-Type: application/json' -d '{"empno":"100","name":"Ivan","job":"Cloud Architect","manager":"10","hiredate":"2021-07-07T13:41:57Z","salary":"20000","commission":"5000","deptno":"5"}'
 ```
 ![](./images/ajdb17.png)
 
