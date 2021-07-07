@@ -8,8 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import oracle.soda.OracleCollection;
 
-import java.time.LocalDateTime;
-
 import com.oracle.springapp.model.Employee;
 import com.oracle.springapp.service.EmployeeServiceSoda;
 
@@ -51,7 +49,7 @@ public class OracleSodaApplication implements CommandLineRunner {
 		str.append("}");
 		JSONObject jsonObj = new JSONObject(str.toString());
 		Employee employee  = new Employee (jsonObj);
-		employeeServiceSoda.insertEmployee(collName, employee);
+		//employeeServiceSoda.insertEmployee(collName, employee);
 
 		//Get employee
 		employeeServiceSoda.displayEmployees(collName);

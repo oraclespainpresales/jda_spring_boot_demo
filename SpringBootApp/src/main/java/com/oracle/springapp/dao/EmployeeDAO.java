@@ -10,5 +10,5 @@ import com.oracle.springapp.model.Employee;
  */
 public interface EmployeeDAO {
 	public List<Employee> getAllEmployeesSoda(String collectionName);
-	void insertEmployeeSoda(String collectionName, Employee employee);
+	public String insertEmployeeSoda(String collectionName, Employee employee);
 }

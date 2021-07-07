@@ -2,6 +2,8 @@ package com.oracle.springapp.service.impl;
 
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,10 +56,22 @@ public class EmployeeServiceSodaImpl implements EmployeeServiceSoda {
 		for(Employee employee: employees)
 			System.out.println(employee);
 	}
+
+	@Override
+	public String displayEmployeesJson(String collectionName) {
+		List<Employee> employees = employeeDao.getAllEmployeesSoda(collectionName);
+		JSONArray employeesJArr  = new JSONArray();
+
+		for(Employee employee: employees){
+			JSONObject jsonEmployee = new JSONObject(employee.toJSON());
+			employeesJArr.put(jsonEmployee);
+		}
+		return employeesJArr.toString();
+	}
 	
 	@Override
-	public void insertEmployee(String collectionName, Employee employee) {
-		employeeDao.insertEmployeeSoda(collectionName, employee);	
+	public String insertEmployee(String collectionName, Employee employee) {
+		return employeeDao.insertEmployeeSoda(collectionName, employee);	
 	}
 	
 }

@@ -63,10 +63,11 @@ public class EmployeeDAOImpl extends JdbcDaoSupport implements EmployeeDAO {
 	}
 	
 	@Override
-	public void insertEmployeeSoda(String collectionName, Employee employee) {
+	public String insertEmployeeSoda(String collectionName, Employee employee) {
 		OracleRDBMSClient cl  = null;
         OracleDatabase db     = null;
         OracleCollection coll = null;
+		String result         = "";
 
         try {
             cl   = new OracleRDBMSClient();
@@ -77,10 +78,12 @@ public class EmployeeDAOImpl extends JdbcDaoSupport implements EmployeeDAO {
 			OracleDocument doc = db.createDocumentFromString(employee.toJSON());
 			OracleDocument insertedDoc = coll.insertAndGet(doc);			
 			System.out.println("Collection [" + collectionName + "] - Employee [" + employee.getName() + "] Inserted!! with key ["+insertedDoc.getKey()+"]");
+			result = insertedDoc.getKey();
         }
         catch (Exception e){
             System.out.println("Error inserting EMP [" + employee.getName() + "]");
             e.printStackTrace();
         }
+		return result;
 	}
 }

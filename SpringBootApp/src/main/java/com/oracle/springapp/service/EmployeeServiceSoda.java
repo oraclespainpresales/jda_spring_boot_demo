@@ -21,12 +21,15 @@ public interface EmployeeServiceSoda {
 	 * Display all employees.
 	 */
 	public void displayEmployees(String collectionName);
+
+	/**
+	 * Display all employees JSON format.
+	 */
+	public String displayEmployeesJson(String collectionName);
 	
 	/**
 	 * Create a new employee record
 	 */
 	
-	public void insertEmployee(String collectionName,Employee employee);
-
-	
+	public String insertEmployee(String collectionName,Employee employee);
 }
