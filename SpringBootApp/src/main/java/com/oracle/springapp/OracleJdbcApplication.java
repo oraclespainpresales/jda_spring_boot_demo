@@ -1,16 +1,16 @@
 package com.oracle.springapp;
 
 
-//import java.sql.Date;
+import java.sql.Date;
 import java.sql.*;
 
-//import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-//import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-//import com.oracle.springapp.model.Employee;
-//import com.oracle.springapp.service.EmployeeService;
+import com.oracle.springapp.model.Employee;
+import com.oracle.springapp.service.EmployeeService;
 
 import oracle.ucp.jdbc.PoolDataSource;
 import oracle.ucp.jdbc.PoolDataSourceFactory;
@@ -31,8 +31,8 @@ public class OracleJdbcApplication implements CommandLineRunner {
 	String DB_PASSWORD = "Autonomous#2021" ;	
 	String CONN_FACTORY_CLASS_NAME="oracle.jdbc.pool.OracleDataSource";
 
-    //@Autowired
-    //EmployeeService employeeService;
+    @Autowired
+    EmployeeService employeeService;
     
 	public static void main(String[] args) {
 		SpringApplication.run(OracleJdbcApplication.class, args);
@@ -41,7 +41,7 @@ public class OracleJdbcApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		poolDataSource = PoolDataSourceFactory.getPoolDataSource();
+		/* poolDataSource = PoolDataSourceFactory.getPoolDataSource();
         try {
             poolDataSource.setConnectionFactoryClassName("oracle.jdbc.pool.OracleDataSource");
             poolDataSource.setURL(DB_URL);
@@ -78,8 +78,8 @@ public class OracleJdbcApplication implements CommandLineRunner {
 		catch(Exception e){
 			System.out.println("ERROR GORDOOOO!!!! Pool data source error!");
 			e.printStackTrace();
-		}
-		/*
+		} */
+		
 		// Displays 20 table names from ALL_TABLES
 		employeeService.displayTableNames();
 		System.out.println("List of employees");
@@ -90,7 +90,7 @@ public class OracleJdbcApplication implements CommandLineRunner {
 		System.out.println("List of Employees after the update");
 		// Displays the list of employees after a new employee record is inserted
 		employeeService.displayEmployees();		
-		*/
+		
 	}
 
 }
