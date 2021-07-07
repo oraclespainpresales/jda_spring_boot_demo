@@ -9,7 +9,6 @@ import com.oracle.springapp.model.Employee;
  *
  */
 public interface EmployeeDAO {
-	public List<Employee> getAllEmployees();
-
-	void insertEmployee(Employee employee);
+	public List<Employee> getAllEmployeesSoda(String collectionName);
+	void insertEmployeeSoda(String collectionName, Employee employee);
 }

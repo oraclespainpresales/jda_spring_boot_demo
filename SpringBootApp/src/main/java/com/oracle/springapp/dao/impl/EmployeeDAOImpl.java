@@ -1,5 +1,6 @@
 package com.oracle.springapp.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -8,6 +9,12 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
+
+import oracle.soda.OracleCollection;
+import oracle.soda.OracleCursor;
+import oracle.soda.OracleDatabase;
+import oracle.soda.OracleDocument;
+import oracle.soda.rdbms.OracleRDBMSClient;
 
 import com.oracle.springapp.dao.EmployeeDAO;
 import com.oracle.springapp.model.Employee;
@@ -30,41 +37,50 @@ public class EmployeeDAOImpl extends JdbcDaoSupport implements EmployeeDAO {
 	}
 
 	@Override
-	public List<Employee> getAllEmployees() {
-		final String sql = "SELECT empno, ename, job, mgr, hiredate, sal, comm, deptno FROM emp";
-		return getJdbcTemplate().query(sql, 
-				(rs, rowNum) -> new Employee(rs.getInt("empno"),
-						rs.getString("ename"),
-						rs.getString("job"),
-						rs.getInt("mgr"),
-						rs.getDate("hiredate"),
-						rs.getInt("sal"),
-						rs.getInt("comm"),
-						rs.getInt("deptno")
-						));
-		
-		
+	public List<Employee> getAllEmployeesSoda(String collectionName) {
+		OracleRDBMSClient cl  = null;
+        OracleDatabase db     = null;
+        OracleCollection coll = null;
+		List<Employee> employees = new ArrayList<Employee>();
+
+        try {
+            cl   = new OracleRDBMSClient();
+            db   = cl.getDatabase(dataSource.getConnection());
+            coll = db.openCollection(collectionName);
+            System.out.println("Collection [" + collectionName + "] - RETRIEVED!!");
+
+			OracleCursor c = coll.find().getCursor();
+
+			while (c.hasNext()) {
+				employees.add(new Employee(c.next()));
+			}
+        }
+        catch (Exception e){
+            System.out.println("Error getting employees!");
+            e.printStackTrace();
+        }
+		return employees;
 	}
 	
 	@Override
-	public void insertEmployee(Employee employee) {
-		String sql = "Select max(empno) from emp"; 
-	    int[] emp_no = new int[1];
-	    //getJdbcTemplate().query(sql, (rs, rowNum) -> emp_no[rowNum] = rs.getInt(1));
-	    getJdbcTemplate().query(sql, (resultSet, rowNumber) -> emp_no[rowNumber] = resultSet.getInt(1));	    
-	    System.out.println("Max emploee number is: " + emp_no[0]);
-	    
-	    sql = "INSERT INTO EMP VALUES(?,?,?,?,?,?,?,?)";
-	    int newEmpNo = emp_no[0]+1;
-		getJdbcTemplate().update(sql, new Object[]{
-				newEmpNo, 
-				employee.getName()+(newEmpNo),
-				employee.getJob(),
-				employee.getManager(),
-				employee.getHiredate(),
-				employee.getSalary(),
-				employee.getCommission(),
-				employee.getDeptno()
-		});
+	public void insertEmployeeSoda(String collectionName, Employee employee) {
+		OracleRDBMSClient cl  = null;
+        OracleDatabase db     = null;
+        OracleCollection coll = null;
+
+        try {
+            cl   = new OracleRDBMSClient();
+            db   = cl.getDatabase(dataSource.getConnection());
+            coll = db.openCollection(collectionName);
+            System.out.println("Collection [" + collectionName + "] - RETRIEVED!!");
+
+			OracleDocument doc = db.createDocumentFromString(employee.toJSON());
+			OracleDocument insertedDoc = coll.insertAndGet(doc);			
+			System.out.println("Collection [" + collectionName + "] - Employee [" + employee.getName() + "] Inserted!! with key ["+insertedDoc.getKey()+"]");
+        }
+        catch (Exception e){
+            System.out.println("Error inserting EMP [" + employee.getName() + "]");
+            e.printStackTrace();
+        }
 	}
 }

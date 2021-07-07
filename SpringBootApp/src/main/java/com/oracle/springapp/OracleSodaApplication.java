@@ -1,54 +1,59 @@
 package com.oracle.springapp;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
-import oracle.soda.OracleDatabase;
-import oracle.soda.OracleException;
-import oracle.soda.rdbms.OracleRDBMSClient;
-
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.oracle.springapp.model.Employee;
-import com.oracle.springapp.service.EmployeeService;
+import oracle.soda.OracleCollection;
 
-public class OracleSodaApplication implements CommandLineRunner{
-    public static void main(String[] args) {
+import java.time.LocalDateTime;
+
+import com.oracle.springapp.model.Employee;
+import com.oracle.springapp.service.EmployeeServiceSoda;
+
+/**
+ * SpringBoot application main class. It uses JdbcTemplate class which
+ * internally uses UCP for connection check-outs and check-ins.
+ *
+ */
+@SpringBootApplication
+public class OracleSodaApplication implements CommandLineRunner {
+	@Autowired
+    EmployeeServiceSoda employeeServiceSoda;
+    
+	public static void main(String[] args) {
 		SpringApplication.run(OracleSodaApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-        /*
-        OracleRDBMSClient cl = new OracleRDBMSClient();
-        OracleDatabase db    = cl.getDatabase(conn);
-        OracleCollection col = db.admin().createCollection("MyJSONCollection");
+		String collName = "Employee";
 
-        // Create a JSON document.
-        OracleDocument doc = db.createDocumentFromString("{ \"name\" : \"Borja\" }");
+		OracleCollection coll = employeeServiceSoda.getCollection(collName);
+		// if collection Employee is not created, it would be created.
+		if (coll == null){
+			coll = employeeServiceSoda.createCollection(collName);
+		}
 
-        // Insert the document into a collection, and get back its
-        // auto-generated key.
-        System.out.println("Before inserting document");
-        String k = col.insertAndGet(doc).getKey();
+		//Insert new employee
+		//Employee employee = new Employee (100,"Borja","BDM",10,LocalDateTime.now(),90000,35000,5);		
+		StringBuilder str = new StringBuilder("{");
+		str.append("\"empno\" : \"100\",");
+		str.append("\"name\" : \"Borja\",");
+		str.append("\"job\" : \"BDM\",");
+		str.append("\"manager\" : \"10\",");
+		str.append("\"hiredate\" : \"2021-07-07T13:41:57Z\",");
+		str.append("\"salary\" : \"90000\",");
+		str.append("\"commission\" : \"35000\",");
+		str.append("\"deptno\" : \"5\"");
+		str.append("}");
+		JSONObject jsonObj = new JSONObject(str.toString());
+		Employee employee  = new Employee (jsonObj);
+		employeeServiceSoda.insertEmployee(collName, employee);
 
-        // Find a document by its key.
-        System.out.println("Inserted content:" + col.find().key(k).getOne().getContentAsString() + "with Key: "+ k);
-
-        OracleDocument f = db.createDocumentFromString("{\"name\" : { \"$startsWith\" : \"B\" }}");
-        OracleCursor c   = col.find().filter(f).getCursor();
-
-        while (c.hasNext()) {
-            // Get the next document.
-            OracleDocument resultDoc = c.next();
-
-            // Print the document key and content.
-            System.out.println("Key:         " + resultDoc.getKey());
-            System.out.println("Content:     " + resultDoc.getContentAsString());
-        }
-        */
-    }
+		//Get employee
+		employeeServiceSoda.displayEmployees(collName);
+	}
 }
