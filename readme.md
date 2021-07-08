@@ -2,12 +2,13 @@
 This Demo will show you how to create a Spring Boot application with Oracle JDBC and SODA to manage an Autonomous JSON Database.
 You will use GITPOD as development environtment. GitPod is a container based Visual Studio Code environtment ready to use from GitHub repositories. You can get more information about [Gitpod here](https://www.gitpod.io/).
 
-## Requirements
+## Summary
 1. Create an Autonomous JSON Database.
 2. Fork the Github project to your github user.
-3. Install GitPod Chrome extension
+3. Install GitPod Chrome extension.
+4. Connect the Spring Boot App with Autonomous JSON Database.
 
-## Creating the Oracle Autonomous JSON Database
+### Creating the Oracle Autonomous JSON Database
 In this chapter you will learn how to create an Autonomous JSON Databse (AJDB). This JSON db will store collections and JSON documents. You must have an OCI (Oracle Cloud) account to create the AJDB. First access to your OCI tenantcy and click in the main menu Oracle Databases.
 
 ![](./images/ajdb01.png)
