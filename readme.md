@@ -2,11 +2,13 @@
 This Demo will show you how to create a Spring Boot application with Oracle JDBC and SODA to manage an Autonomous JSON Database.
 You will use GITPOD as development environtment. GitPod is a container based Visual Studio Code environtment ready to use from GitHub repositories. You can get more information about [Gitpod here](https://www.gitpod.io/).
 
+## Requirements.
+1. An Autonomous JSON Database (if you don't have one you must to create it).
+2. Install GitPod Chrome extension.
+
 ## Summary
-1. Create an Autonomous JSON Database.
-2. Fork the Github project to your github user.
-3. Install GitPod Chrome extension.
-4. Connect the Spring Boot App with Autonomous JSON Database.
+- Fork the Github project to your github user.
+- Connect the Spring Boot App with Autonomous JSON Database.
 
 ## Creating the Oracle Autonomous JSON Database
 In this chapter you will learn how to create an Autonomous JSON Databse (AJDB). This JSON db will store collections and JSON documents. You must have an OCI (Oracle Cloud) account to create the AJDB. First access to your OCI tenantcy and click in the main menu Oracle Databases.
@@ -30,11 +32,6 @@ Next write an *ADMIN* password, it must have Capital letters, numbers and specia
 ![](./images/ajdb05.png)
 
 After a few minutes your AJD will change from Orange (provisioning) to Green (Available).
-
-## Fork the github project.
-First step to follow the demo is to fork the github project in your own repository. So sing in github with your user/password and fork the **jda_spring_boot_demo** repository. This process will clone the repository in your user repository space.
-
-![](./images/fork01.png)
 
 ## GITPOD Chome Extension.
 To use Gitpod with your web browser (Chrome) you will have to install a chrome extension. Gitpod extension is in the Chrome marketplace and you can get it [here](https://chrome.google.com/webstore/detail/gitpod-dev-environments-i/dodmmooeoklaejobgleioelladacbeki)
@@ -63,6 +60,11 @@ That gitpod workspace will use the github repository to create your visual studi
 This gitpod workspace will be linked to your github repository and you will can do git push to modify the code from the gitpod environtment for instance.
 
 ![](./images/gitpod07.png)
+
+## Fork the github project.
+First step to follow the demo is to fork the github project in your own repository. So sing in github with your user/password and fork the **jda_spring_boot_demo** repository. This process will clone the repository in your user repository space.
+
+![](./images/fork01.png)
 
 ## AJDB Connection using wallet.
 In this section you will connect the springboot application with yor AJDB using the wallet security file.
