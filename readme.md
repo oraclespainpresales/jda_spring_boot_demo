@@ -29,9 +29,7 @@ Next write an *ADMIN* password, it must have Capital letters, numbers and specia
 
 ![](./images/ajdb05.png)
 
-After a few minutes your AJD will change from Orange (provisioning) to Green (Available). Then Click in **DB Connection** button.
-
-![](./images/ajdb06.png)
+After a few minutes your AJD will change from Orange (provisioning) to Green (Available).
 
 ## Fork the github project.
 First step to follow the demo is to fork the github project in your own repository. So sing up in github with your user and fork the **jda_spring_boot_demo** repository. This process will clone the repository in your user repository space.
@@ -69,7 +67,11 @@ This gitpod workspace will be linked to your github repository and you will can 
 ## AJDB Connection using wallet.
 In this section you will connect the springboot application with yor AJDB using the wallet security file.
 
-First Click in **Download Wallet** button.
+First Click in **DB Connection** button.
+
+![](./images/ajdb06.png)
+
+Then Click in **Download Wallet** button.
 
 ![](./images/ajdb07.png)
 
