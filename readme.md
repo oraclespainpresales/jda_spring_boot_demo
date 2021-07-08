@@ -57,7 +57,7 @@ That gitpod workspace will use the github repository to create your visual studi
 
 ![](./images/gitpod06.png)
 
-This gitpod workspace will be linked to your github repository and you will can do git push to modify the code from the gitpod environtment for instance.
+This gitpod workspace will be linked to your github repository and you will can do git push to modify the code from the gitpod environtment for example.
 
 ![](./images/gitpod07.png)
 
