@@ -89,7 +89,7 @@ Write **wallet** as a Folder name.
 
 ![](./images/ajdb09b.png)
 
-Next, right click over wallet folder and click Upload menu item to upload the database wallet zip file.
+Next, right click over *wallet* folder and click **Upload** menu item to upload the database wallet zip file.
 
 ![](./images/ajdb09c.png)
 
