@@ -52,7 +52,7 @@ Please select your compartment and write a descriptive database display name and
 
 ![](./images/ajdb04.png)
 
-Next write an *ADMIN* password, it must have Capital letters, numbers and special character so we recomend something like **Autonomous#2021**. Keep the other fields as default and click in **Create Autonomous Database** button.
+Next write an *ADMIN* password, it must have Capital letters, numbers and special character so we recomend something like **Passw0rdAJD#21**. Keep the other fields as default and click in **Create Autonomous Database** button.
 
 ![](./images/ajdb05.png)
 
@@ -64,7 +64,7 @@ Click in **Download Wallet** button.
 
 ![](./images/ajdb07.png)
 
-Write a password for the wallet file. You can use the same password that you use for ADMIN access (**Autonomous#2021**). Then Click **Download** button to download the database wallet to your computer/laptop in zip format.
+Write a password for the wallet file. You can use the same password that you use for ADMIN access (**Passw0rdAJD#21**). Then Click **Download** button to download the database wallet to your computer/laptop in zip format.
 
 ![](./images/ajdb08.png)
 
