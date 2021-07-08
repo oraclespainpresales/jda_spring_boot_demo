@@ -109,7 +109,7 @@ Now you can delete the zip file if you want. Check *tnsnames.ora* file to get th
 
 ![](./images/ajdb12.png)
 
-Next check **application.properties** spring boot file and write your connection service name in the **spring.datasource.url** parameter. Change your password if you didn't use **Passw0rd#21**
+Next check **application.properties** spring boot file and write your connection service name in the **spring.datasource.url** parameter. Change your password if you didn't use **Passw0rdAJD#21**
 
 ![](./images/ajdb13.png)
 
