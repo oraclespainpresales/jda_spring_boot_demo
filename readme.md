@@ -8,7 +8,7 @@ You will use GITPOD as development environtment. GitPod is a container based Vis
 3. Install GitPod Chrome extension.
 4. Connect the Spring Boot App with Autonomous JSON Database.
 
-### Creating the Oracle Autonomous JSON Database
+## Creating the Oracle Autonomous JSON Database
 In this chapter you will learn how to create an Autonomous JSON Databse (AJDB). This JSON db will store collections and JSON documents. You must have an OCI (Oracle Cloud) account to create the AJDB. First access to your OCI tenantcy and click in the main menu Oracle Databases.
 
 ![](./images/ajdb01.png)
