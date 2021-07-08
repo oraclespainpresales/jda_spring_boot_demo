@@ -2,12 +2,42 @@
 This Demo will show you how to create a Spring Boot application with Oracle JDBC and SODA to manage an Autonomous JSON Database.
 You will use GITPOD as development environtment. GitPod is a container based Visual Studio Code environtment ready to use from GitHub repositories. You can get more information about [Gitpod here](https://www.gitpod.io/).
 
+## Requirements
+1. Create an Autonomous JSON Database.
+2. Fork the Github project to your github user.
+3. Install GitPod Chrome extension
+
+## Creating the Oracle Autonomous JSON Database
+In this chapter you will learn how to create an Autonomous JSON Databse (AJDB). This JSON db will store collections and JSON documents. You must have an OCI (Oracle Cloud) account to create the AJDB. First access to your OCI tenantcy and click in the main menu Oracle Databases.
+
+![](./images/ajdb01.png)
+
+Then click in Autonomous JSON Database to access the AJDB OCI menu.
+
+![](./images/ajdb02.png)
+
+Next click in the **Create Autonomous Database** button to start the creation process.
+
+![](./images/ajdb03.png)
+
+Please select your compartment and write a descriptive database display name and database internal name (14 char max). Keep selected **JSON** database type and **Shared Infraestructure**. Check **Always Free** to create the database as free tier and select **21c** version (or 19c if you want to upgrade to a paid version in the future).
+
+![](./images/ajdb04.png)
+
+Next write an *ADMIN* password, it must have Capital letters, numbers and special character so we recomend something like **Passw0rdAJD#21**. Keep the other fields as default and click in **Create Autonomous Database** button.
+
+![](./images/ajdb05.png)
+
+After a few minutes your AJD will change from Orange (provisioning) to Green (Available). Then Click in **DB Connection** button.
+
+![](./images/ajdb06.png)
+
 ## Fork the github project.
 First step to follow the demo is to fork the github project in your own repository. So sing up in github with your user and fork the **jda_spring_boot_demo** repository. This process will clone the repository in your user repository space.
 
 ![](./images/fork01.png)
 
-## GITPOD.
+## GITPOD Chome Extension.
 To use Gitpod with your web browser (Chrome) you will have to install a chrome extension. Gitpod extension is in the Chrome marketplace and you can get it [here](https://chrome.google.com/webstore/detail/gitpod-dev-environments-i/dodmmooeoklaejobgleioelladacbeki)
 
 Please add the extension to use gitpod for that demo.
@@ -35,32 +65,10 @@ This gitpod workspace will be linked to your github repository and you will can 
 
 ![](./images/gitpod07.png)
 
-## Creating the Oracle Autonomous JSON Database
-In this chapter you will learn how to create an Autonomous JSON Databse (AJDB). This JSON db will store collections and JSON documents. You must have an OCI (Oracle Cloud) account to create the AJDB. First access to your OCI tenantcy and click in the main menu Oracle Databases.
+## AJDB Connection using wallet.
+In this section you will connect the springboot application with yor AJDB using the wallet security file.
 
-![](./images/ajdb01.png)
-
-Then click in Autonomous JSON Database to access the AJDB OCI menu.
-
-![](./images/ajdb02.png)
-
-Next click in the **Create Autonomous Database** button to start the creation process.
-
-![](./images/ajdb03.png)
-
-Please select your compartment and write a descriptive database display name and database internal name (14 char max). Keep selected **JSON** database type and **Shared Infraestructure**. Check **Always Free** to create the database as free tier and select **21c** version (or 19c if you want to upgrade to a paid version in the future).
-
-![](./images/ajdb04.png)
-
-Next write an *ADMIN* password, it must have Capital letters, numbers and special character so we recomend something like **Passw0rdAJD#21**. Keep the other fields as default and click in **Create Autonomous Database** button.
-
-![](./images/ajdb05.png)
-
-After a few minutes your AJD will change from Orange (provisioning) to Green (Available). Then Click in **DB Connection** button.
-
-![](./images/ajdb06.png)
-
-Click in **Download Wallet** button.
+First Click in **Download Wallet** button.
 
 ![](./images/ajdb07.png)
 
@@ -96,7 +104,7 @@ Now you can delete the zip file if you want. Check *tnsnames.ora* file to get th
 
 ![](./images/ajdb12.png)
 
-Next check **application.properties** spring boot file and write your connection service name in the **spring.datasource.url** parameter. Change your password if you didn't use **Autonomous#2021**
+Next check **application.properties** spring boot file and write your connection service name in the **spring.datasource.url** parameter. Change your password if you didn't use **Passw0rd#21**
 
 ![](./images/ajdb13.png)
 
