@@ -32,7 +32,7 @@ Next write an *ADMIN* password, it must have Capital letters, numbers and specia
 After a few minutes your AJD will change from Orange (provisioning) to Green (Available).
 
 ## Fork the github project.
-First step to follow the demo is to fork the github project in your own repository. So sing up in github with your user and fork the **jda_spring_boot_demo** repository. This process will clone the repository in your user repository space.
+First step to follow the demo is to fork the github project in your own repository. So sing in github with your user/password and fork the **jda_spring_boot_demo** repository. This process will clone the repository in your user repository space.
 
 ![](./images/fork01.png)
 
